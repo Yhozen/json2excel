@@ -13,7 +13,7 @@ async function main () {
     const workbook = await XlsxPopulate.fromBlankAsync()
     const sheet = workbook.sheet(0).name('Form')
     sheet.column("A").width(25)
-    sheet.cell("A1").style("bold", true).value(toWrite)
+    sheet.cell("A1").style({bold: true, fontSize: 16}).value(toWrite)
     workbook.toFileAsync("./outputs/test.xlsx")
 }
 
