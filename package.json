@@ -1,0 +1,29 @@
+{
+  "name": "json2excel",
+  "version": "0.0.1",
+  "description": "A package to transform a Form.io JSON form into a Excel form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yhozen/json2excel.git"
+  },
+  "keywords": [
+    "excel",
+    "json"
+  ],
+  "author": "Garox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yhozen/json2excel/issues"
+  },
+  "homepage": "https://github.com/Yhozen/json2excel#readme",
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "node": "^8.12.0",
+    "xlsx-populate": "^1.17.0"
+  }
+}
