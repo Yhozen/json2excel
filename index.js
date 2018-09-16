@@ -4,6 +4,10 @@ main()
 
 async function main () {
     const workbook = await XlsxPopulate.fromBlankAsync()
-    workbook.sheet("Sheet1").cell("A1").value("This is neat!")
+    workbook.sheet(0).cell("A1").value([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ])
     workbook.toFileAsync("./outputs/test.xlsx")
 }
