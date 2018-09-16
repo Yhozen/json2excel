@@ -63,3 +63,5 @@ typings/
 
 # own outputs
 outputs/*
+
+.DS_Store
