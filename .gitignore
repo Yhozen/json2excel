@@ -62,4 +62,4 @@ typings/
 
 
 # own outputs
- outputs/
+ outputs/*
