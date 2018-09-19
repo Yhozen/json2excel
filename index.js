@@ -3,6 +3,8 @@ const XlsxPopulate = require('xlsx-populate')
 const get = require('lodash.get')
 const fetch = require('node-fetch')
 
+const handleComponentType = require('./handleComponentType')
+
 const URL = 'https://tlobzrztlyxicim.form.io/user/login'
 
 main()
@@ -30,36 +32,4 @@ function parseJson(json, sheet) {
         (accumulator, component, i, array) => handleComponentType(accumulator, component, sheet),
         { row: 2, column: 1 }
     )
-}
-
-function handleComponentType (accumulator, component, sheet){
-    switch (component.type) {
-        case 'button':
-            return accumulator
-        case 'email':
-        case 'password':
-        case 'textfield':
-            return wTextComp(accumulator, component, sheet)
-        case 'select':
-        case 'radio':
-            return wRadioComp(accumulator, component, sheet)
-        default:
-            return accumulator
-    }
-}
-
-function wTextComp ({ row, column }, component, sheet) {
-    const { _maxRowNumber } = sheet.row(row).cell(column)
-    .value([[ component.label, 'Write here']])
-    .style({ fontSize: 14, fill: 'd9d9d9' })
-    return { row: _maxRowNumber+2, column:1 }
-}
-function wRadioComp ({ row, column }, component, sheet) {
-    const { _maxRowNumber } = sheet.row(row).cell(column)
-        .value([[ component.label, '']])
-        .style({ fontSize: 14, fill: 'd9d9d9' })
-    const valuesArray = component.values || component.data.values // to handle both radio and select with one function
-    const values = '"' + valuesArray.map(({value}) => value).toString() + '"'
-    sheet.row(row).cell(column+1).dataValidation(values)
-    return { row: _maxRowNumber+2, column:1 }
 }
