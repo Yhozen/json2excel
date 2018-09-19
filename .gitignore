@@ -63,5 +63,6 @@ typings/
 
 # own outputs
 outputs/*
+!outputs/.empty
 
 .DS_Store
