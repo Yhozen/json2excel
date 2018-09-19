@@ -4,7 +4,7 @@ const wDateComp = require('./wDateComp')
 
 module.exports = handleComponentType
 
-function handleComponentType (accumulator, component, sheet){
+function handleComponentType (accumulator, component){
     switch (component.type) {
         case 'button':
             return accumulator
@@ -12,10 +12,10 @@ function handleComponentType (accumulator, component, sheet){
         case 'password':
         case 'textfield':
         case 'datetime':
-            return wTextComp(accumulator, component, sheet)
+            return wTextComp(accumulator, component)
         case 'select':
         case 'radio':
-            return wRadioComp(accumulator, component, sheet)
+            return wRadioComp(accumulator, component)
         default:
             return accumulator
     }
