@@ -1,4 +1,4 @@
-module.exports = function wDateComp (cell, component) {
+module.exports = function wDateComp ({cell, growDir}, component) {
     cell.value(component.label)
         .style({ fontSize: 14, fill: 'd9d9d9' })
 

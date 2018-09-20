@@ -7,6 +7,7 @@ const handleComponentType = require('./handleComponentType')
 
 const URL = 'https://tlobzrztlyxicim.form.io/user/login'
 
+
 main()
 
 async function main () {
@@ -29,6 +30,6 @@ function parseJson(json, sheet) {
     const initialCell = sheet.cell('A1').value(title).style({bold: true, fontSize: 18})
     components.reduce(
         (accumulator, component, i, array) => handleComponentType(accumulator, component),
-        initialCell.relativeCell(1,0)
+        { cell: initialCell.relativeCell(1,0), growDir: 'row' }
     )
 }
