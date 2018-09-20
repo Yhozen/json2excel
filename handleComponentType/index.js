@@ -2,6 +2,7 @@ const wTextComp = require('./wTextComp')
 const wRadioComp = require('./wRadioComp')
 const wColumnsComp = require('./wColumnsComp')
 const wDateComp = require('./wDateComp')
+const wFieldsetComp = require('./wFieldsetComp')
 
 module.exports = function handleComponentType (accumulator, component){
     switch (component.type) {
@@ -18,6 +19,8 @@ module.exports = function handleComponentType (accumulator, component){
         case 'select':
         case 'radio':
             return wRadioComp(accumulator, component)
+        case 'fieldset':
+            return wFieldsetComp(accumulator, component)
         default:
             return accumulator
     }
