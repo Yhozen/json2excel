@@ -1,6 +1,4 @@
-const fs = require('fs-extra')
 const XlsxPopulate = require('xlsx-populate')
-const get = require('lodash.get')
 const fetch = require('node-fetch')
 
 const handleComponentType = require('./handleComponentType')
