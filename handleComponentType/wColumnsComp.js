@@ -9,7 +9,7 @@ const wColumnsComp = (accumulator, component) => {
     const { cell, growDir } = accumulator
     cell.value(component.label)
         .style({ fontSize: 14, fill: 'd9d9d9' })
-    const initial = { ...accumulator, cell: cell.relativeCell(...grow(growDir)), growDir: 'column'}
+    const initial = { ...accumulator, cell: cell.relativeCell(1,0), growDir: 'column'}
     component.columns.reduce( (acc, column) => {
         return column.components.reduce( (accumulator, component, i, array) => handleComponentType(accumulator, component),
         acc 
