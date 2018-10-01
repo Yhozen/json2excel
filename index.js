@@ -15,6 +15,7 @@ async function main () {
     parseJson(json, sheet)
     sheet.column('A').width(25)
     workbook.toFileAsync('./outputs/test.xlsx')
+    setTimeout(()=>console.log('wait'), 60*60*1000)
 }
 
 async function fetchJson(url) {
@@ -26,8 +27,7 @@ function parseJson(json, sheet) {
     const { title, components } = json
     if (!components) throw console.error('No components')
     const initialCell = sheet.cell('A1').value(title).style({bold: true, fontSize: 18})
-    components.reduce(
-        (accumulator, component, i, array) => handleComponentType(accumulator, component),
-        { cell: initialCell.relativeCell(1,0), growDir: 'row' }
+    components.reduce(handleComponentType,
+        { cell: initialCell.relativeCell(1,0), context: ['global'] }
     )
 }

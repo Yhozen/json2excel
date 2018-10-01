@@ -4,23 +4,22 @@ const wColumnsComp = require('./wColumnsComp')
 const wDateComp = require('./wDateComp')
 const wFieldsetComp = require('./wFieldsetComp')
 
-module.exports = function handleComponentType (accumulator, component){
-    switch (component.type) {
+module.exports = function handleComponentType (...params) {
+    const [ accumulator, { type } ] = params
+    switch (type) {
          case 'columns':
-            return wColumnsComp(accumulator, component)
-        case 'button':
-            return accumulator
+            return wColumnsComp(...params)
         case 'email':
         case 'number':
         case 'password':
         case 'textfield':
         case 'datetime':
-            return wTextComp(accumulator, component)
+            return wTextComp(...params)
         case 'select':
         case 'radio':
-            return wRadioComp(accumulator, component)
+            return wRadioComp(...params)
         case 'fieldset':
-            return wFieldsetComp(accumulator, component)
+            return wFieldsetComp(...params)
         default:
             return accumulator
     }

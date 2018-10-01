@@ -6,7 +6,8 @@ process.nextTick( () => handleComponentType = require('./index'))
 /* handle recursive depencency */
 
 const wRowComp = (accumulator, component) => {
-    const { cell, growDir } = accumulator
+    const { cell: lastCell, growDir } = accumulator
+    const cell = lastCell.relativeCell(...grow(growDir))
     cell.value(component.label)
         .style({ fontSize: 14, fill: 'd9d9d9' })
     const initial = { ...accumulator, cell: cell.relativeCell(...grow(growDir)), growDir: 'row'}
@@ -15,7 +16,7 @@ const wRowComp = (accumulator, component) => {
         acc 
         )
     }, initial )
-    return { ...accumulator, cell: initial.cell.relativeCell(...grow(growDir)) }
+    return { ...accumulator, cell }
 }
 
 module.exports = wRowComp
