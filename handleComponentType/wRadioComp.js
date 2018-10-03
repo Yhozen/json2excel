@@ -1,5 +1,3 @@
-const grow = require('./util/grow')
-
 module.exports = function wRadioComp (context, component) {
     const cell = context.next()
     cell.value([[ component.label, '']])

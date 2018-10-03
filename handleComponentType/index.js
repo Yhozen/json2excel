@@ -11,6 +11,8 @@ module.exports = function handleComponentType (...params) {
             return wColumnsComp(...params)
         case 'fieldset':
             return wFieldsetComp(...params)
+        case 'datetime':
+            return wDateComp(...params)
         case 'email':
         case 'number':
         case 'password':
