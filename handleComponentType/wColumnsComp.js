@@ -7,11 +7,16 @@ let handleComponentType = null
 process.nextTick( () => handleComponentType = require('./index'))
 /* handle recursive depencency */
 
-const wColumnsComp = (context, { label, columns }) => {
-    let columnContext = new ColumnContext(context.next(), context)
-    const cell = columnContext._cell
-    cell.value(label)
-        .style({ fontSize: 14, fill: 'd9d9d9' })
+const wColumnsComp = (context, { label, columns, hideLabel }) => {
+    let columnContext
+    if (!hideLabel) {
+        columnContext = new ColumnContext(context.next(), context)
+        const cell = columnContext._cell
+        cell.value(label)
+            .style({ fontSize: 14, fill: 'd9d9d9' })
+    } else {
+        columnContext = new ColumnContext(context.current(), context)
+    }
     columns.reduce( columnReduce, columnContext )
     return columnContext.parent
 }
