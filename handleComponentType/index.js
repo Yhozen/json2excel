@@ -1,4 +1,5 @@
 const wTextComp = require('./wTextComp')
+const wNumberComp = require('./wNumberComp')
 const wRadioComp = require('./wRadioComp')
 const wColumnsComp = require('./wColumnsComp')
 const wDateComp = require('./wDateComp')
@@ -13,8 +14,9 @@ module.exports = function handleComponentType (...params) {
             return wFieldsetComp(...params)
         case 'datetime':
             return wDateComp(...params)
-        case 'email':
         case 'number':
+            return wNumberComp(...params)
+        case 'email':
         case 'password':
         case 'textfield':
         case 'datetime':
