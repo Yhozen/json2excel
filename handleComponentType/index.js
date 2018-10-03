@@ -19,7 +19,6 @@ module.exports = function handleComponentType (...params) {
         case 'email':
         case 'password':
         case 'textfield':
-        case 'datetime':
             return wTextComp(...params)
         case 'select':
         case 'radio':
