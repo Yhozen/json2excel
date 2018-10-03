@@ -1,4 +1,4 @@
-module.exports = function wNumberComp (context, component, i, array) {
+module.exports = function wEmailComp (context, component, i, array) {
     const cell = context.next()
     cell.value([[ component.label, '']]).style({ fontSize: 14, fill: 'd9d9d9' })
     const validationCell = cell.relativeCell(0,1)
@@ -6,9 +6,9 @@ module.exports = function wNumberComp (context, component, i, array) {
     validationCell.dataValidation({
         type: 'custom',
         showErrorMessage: true,
-        error: 'Must be a number',
-        errorTitle: 'Incorrect type of value',
-        formula1: `ISNUMBER(${address})`
+        error: 'Must be a correct email address',
+        errorTitle: `Data type didn't match`,
+        formula1: `AND(ISNUMBER(SEARCH("@",${address})),ISNUMBER(SEARCH(".",${address})))`
     })
 
     context._update(validationCell)
