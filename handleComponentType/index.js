@@ -9,6 +9,8 @@ module.exports = function handleComponentType (...params) {
     switch (type) {
          case 'columns':
             return wColumnsComp(...params)
+        case 'fieldset':
+            return wFieldsetComp(...params)
         case 'email':
         case 'number':
         case 'password':
@@ -22,6 +24,3 @@ module.exports = function handleComponentType (...params) {
             return accumulator
     }
 }
-
-// case 'fieldset':
-// return wFieldsetComp(...params)

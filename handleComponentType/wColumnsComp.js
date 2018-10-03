@@ -8,7 +8,7 @@ process.nextTick( () => handleComponentType = require('./index'))
 /* handle recursive depencency */
 
 const wColumnsComp = (context, { label, columns }) => {
-    let columnContext = new ColumnContext(context.next(), context)
+    let columnContext = new ColumnContext(context.next, context)
     const cell = columnContext._cell
     cell.value(label)
         .style({ fontSize: 14, fill: 'd9d9d9' })

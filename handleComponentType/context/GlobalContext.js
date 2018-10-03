@@ -15,6 +15,10 @@ class GlobalContext {
         const current = this.y.max.rowNumber()
         const possibleMax = cell.rowNumber() 
         if (possibleMax > current) this.y.max = cell
+        this._cell = cell
+    }
+    current () {
+        return this.next().relativeCell(...grow().map(n => -n))
     }
     next () {
         this._cell = this.sheet.cell(this.y.max.rowNumber(), this.x.min.columnNumber()).relativeCell(...grow())

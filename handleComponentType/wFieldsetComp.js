@@ -1,4 +1,5 @@
 const grow = require('./util/grow')
+const ColCompContext = require('./context/ColCompContext')
 
 /* handle recursive depencency */
 let handleComponentType = null
@@ -6,18 +7,15 @@ process.nextTick( () => handleComponentType = require('./index'))
 /* handle recursive depencency */
 
 module.exports = function wFieldsetComp  (context, {components, legend}) {
-    const cell = context.next()
-    cell.value(legend)
-        .style({ fontSize: 14, fill: 'd9d9d9' })
-    context.update(cell.relativeCell(1,0))
-    const { cell: newCell } = components.reduce( handleFieldset,
-    initial 
+    if (legend) { 
+        let cell = context.next()
+        cell.value(legend)
+            .style({ fontSize: 14, fill: 'd9d9d9' })
+    } 
+    const fieldSetContext = new ColCompContext(context.current(), context)
+    components.reduce( handleComponentType,
+        fieldSetContext 
     )
-    return { ...accumulator, cell }
-}
-
-
-function handleFieldset (...params) {
-    console.log(params)
-    return handleComponentType(...params)
+    console.log(fieldSetContext._cell.rowNumber(),fieldSetContext._cell.columnNumber())
+    return fieldSetContext.parent
 }
