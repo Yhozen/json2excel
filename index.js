@@ -15,6 +15,7 @@ async function main () {
     const json = await fetchJson(URL)
     parseJson(json, sheet)
     sheet.column('A').width(25)
+    sheet.gridLinesVisible(false) 
     workbook.toFileAsync('./outputs/test.xlsx')
 }
 
