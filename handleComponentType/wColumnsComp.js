@@ -1,27 +1,29 @@
 const grow = require('./util/grow')
+const ColumnContext = require('./context/ColumnContext')
+const ColCompContext = require('./context/ColCompContext')
 
 /* handle recursive depencency */
 let handleComponentType = null
 process.nextTick( () => handleComponentType = require('./index'))
 /* handle recursive depencency */
 
-const wColumnsComp = (accumulator, { label, columns }) => {
-    const { cell: lastCell, growDir, context } = accumulator
-    context.push('COLUMN')
-    const cell = lastCell.relativeCell(...grow(growDir))
+const wColumnsComp = (context, { label, columns }) => {
+    let columnContext = new ColumnContext(context.next(), context)
+    const cell = columnContext._cell
     cell.value(label)
         .style({ fontSize: 14, fill: 'd9d9d9' })
-    const initial = { ...accumulator, cell, growDir: 'H_BREAK', }
-    columns.reduce( columnReduce, initial )
-    context.pop()
-    return { ...accumulator, cell: initial.cell.relativeCell(...grow(growDir)) }
+    columns.reduce( columnReduce, columnContext )
+    return columnContext.parent
 }
 
-function columnReduce (accumulator, { components, growDir }, i) {
-    return components.reduce((middleAcc, elem, j, array) => {
-        (i==0 && j==0) ? middleAcc = { ...middleAcc, growDir: 'INIT_COLUMN'} : middleAcc = { ...middleAcc, growDir: 'H_BREAK' } 
-        return handleComponentType(middleAcc, elem, j, array)
-    }, accumulator)
+function columnReduce (context, { components }, i ) {
+    let colCompContext
+    if (i == 0) {
+        colCompContext = new ColCompContext(context._cell, context)
+    } else {
+        colCompContext = new ColCompContext(context.next(), context)
+    }
+    return components.reduce( handleComponentType, colCompContext ).parent
 }
 
 module.exports = wColumnsComp

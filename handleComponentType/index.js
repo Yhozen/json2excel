@@ -18,10 +18,10 @@ module.exports = function handleComponentType (...params) {
         case 'select':
         case 'radio':
             return wRadioComp(...params)
-        case 'fieldset':
-            return wFieldsetComp(...params)
         default:
             return accumulator
     }
 }
 
+// case 'fieldset':
+// return wFieldsetComp(...params)

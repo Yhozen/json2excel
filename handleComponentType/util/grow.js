@@ -3,7 +3,7 @@ const spaces = 2
 module.exports = function grow (growtype) {
     switch (growtype) {
         case 'H_BREAK':    
-            return [0, spaces + 1]
+            return [0, spaces]
         case 'V_BREAK':
             return [spaces, 0]
         case 'INIT_COLUMN':

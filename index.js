@@ -2,6 +2,7 @@ const XlsxPopulate = require('xlsx-populate')
 const fetch = require('node-fetch')
 
 const handleComponentType = require('./handleComponentType')
+const GlobalContext = require('./handleComponentType/context/GlobalContext')
 
 const URL = 'https://tlobzrztlyxicim.form.io/user/login'
 
@@ -15,7 +16,6 @@ async function main () {
     parseJson(json, sheet)
     sheet.column('A').width(25)
     workbook.toFileAsync('./outputs/test.xlsx')
-    setTimeout(()=>console.log('wait'), 60*60*1000)
 }
 
 async function fetchJson(url) {
@@ -26,8 +26,9 @@ async function fetchJson(url) {
 function parseJson(json, sheet) {
     const { title, components } = json
     if (!components) throw console.error('No components')
-    const initialCell = sheet.cell('A1').value(title).style({bold: true, fontSize: 18})
+    const globalContext = new GlobalContext(sheet.cell('A1'))
+    const initialCell = globalContext.y.min.value(title).style({bold: true, fontSize: 18})
     components.reduce(handleComponentType,
-        { cell: initialCell.relativeCell(1,0), context: ['global'] }
+        globalContext
     )
 }
