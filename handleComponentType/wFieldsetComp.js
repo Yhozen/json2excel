@@ -16,6 +16,5 @@ module.exports = function wFieldsetComp  (context, {components, legend}) {
     components.reduce( handleComponentType,
         fieldSetContext 
     )
-    console.log(fieldSetContext._cell.rowNumber(),fieldSetContext._cell.columnNumber())
     return fieldSetContext.parent
 }
