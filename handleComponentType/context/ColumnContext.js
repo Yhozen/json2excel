@@ -7,9 +7,7 @@ class ColumnContext extends GlobalContext {
         this.parent = parent
     }
     next () {
-
         this._cell = this.sheet.cell(this.y.min.rowNumber(), this.x.max.columnNumber()).relativeCell(...grow('H_BREAK'))
-    
         this._update(this._cell)
         return this._cell
     }
