@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/Yhozen/json2excel#readme",
   "dependencies": {
-    "node": "^8.12.0",
     "node-fetch": "^2.2.0",
     "xlsx-populate": "^1.17.0"
   }
