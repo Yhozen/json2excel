@@ -20,7 +20,7 @@ async function main (url = TEST_URL, writeCallback = output) {
     parseJson(json, sheet)
     sheet.column('A').width(25)
     sheet.gridLinesVisible(false) 
-    writeCallback(workbook)
+    return writeCallback(workbook)
 }
 
 async function fetchJson(url) {
