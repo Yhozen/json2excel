@@ -32,7 +32,7 @@ class IndexPage extends React.Component {
     return (
       <div>
       <h1>Form.io form to Excel example</h1>
-      <p>Now go build something great.</p>
+      <p>Put a Form.io JSON URL below (or use the default) and press build and then download the file</p>
       <input placeholder='Form.io JSON URL' onChange={this.inputChange}></input><br/>
       <button onClick={this.setURL}>Build</button> <br/>
       <a id='download' href={this.state.blobURL} download={'out.xlsx'}>Download file</a>
