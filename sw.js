@@ -26,21 +26,21 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-92467170fd6846d21098.js"
+    "url": "webpack-runtime-a167c3691078684144a2.js"
   },
   {
-    "url": "app-0dbed2bf42847bff8f8a.js"
+    "url": "app-d94875d4ad525b144d5e.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-c9c937b9491619a6493b.js"
   },
   {
     "url": "index.html",
-    "revision": "9d993406a897d90d8620bb16087383c1"
+    "revision": "c5d59caa5561828dc40219a16ac9c580"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9ddd59c6336dce9b9bdeb715b46075de"
+    "revision": "03fbcdbe0199d151a2a0928fd60a3fc2"
   },
   {
     "url": "component---src-pages-index-js.e2629b924a1df308041f.css"
@@ -56,10 +56,10 @@ self.__precacheManifest = [
     "revision": "c2508676a2f33ea9f1f0bf472997f9a0"
   },
   {
-    "url": "0-fca5f3e8d82e23ba1872.js"
+    "url": "0-c5346985827cb381c78c.js"
   },
   {
-    "url": "component---src-pages-404-js-06f192cc2f18cee88411.js"
+    "url": "component---src-pages-404-js-da2dcd7a6d1ebc12e5d4.js"
   },
   {
     "url": "static/d/164/path---404-html-516-62a-NZuapzHg3X9TaN1iIixfv1W23E.json",
@@ -77,7 +77,7 @@ self.__precacheManifest = [
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/offline-plugin-app-shell-fallback/index.html", {
+workbox.routing.registerNavigationRoute("/json2excel/offline-plugin-app-shell-fallback/index.html", {
   whitelist: [/^[^?]*([^.?]{5}|\.html)(\?.*)?$/],
   blacklist: [/\?(.+&)?no-cache=1$/],
 });
