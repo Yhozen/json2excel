@@ -26,7 +26,7 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a167c3691078684144a2.js"
+    "url": "webpack-runtime-b1589660074aedff4188.js"
   },
   {
     "url": "app-d94875d4ad525b144d5e.js"
@@ -36,17 +36,17 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "c5d59caa5561828dc40219a16ac9c580"
+    "revision": "1ce0046831ed88a9527b5fa8bf174d2d"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "03fbcdbe0199d151a2a0928fd60a3fc2"
+    "revision": "5ecca096ce6c01e94277a24bc1bc53bc"
   },
   {
     "url": "component---src-pages-index-js.e2629b924a1df308041f.css"
   },
   {
-    "url": "component---src-pages-index-js-b45b87478493736aa3e3.js"
+    "url": "component---src-pages-index-js-f4a10b591e1bcaf2d889.js"
   },
   {
     "url": "7-9c8811f71131657ea570.js"
@@ -68,10 +68,6 @@ self.__precacheManifest = [
   {
     "url": "static/d/520/path---offline-plugin-app-shell-fallback-a-30-c5a-NZuapzHg3X9TaN1iIixfv1W23E.json",
     "revision": "c2508676a2f33ea9f1f0bf472997f9a0"
-  },
-  {
-    "url": "manifest.webmanifest",
-    "revision": "55a9292126f8836e91e5d40b0a8cb54f"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
