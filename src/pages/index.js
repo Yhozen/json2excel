@@ -1,15 +1,7 @@
 import React from 'react'
 import '../components/layout.css'
-import json2Excel from 'json2excel'
-
-const TEST_URL = 'https://tlobzrztlyxicim.form.io/user/login'
-
-async function callback (workbook) {
-  let blobOutput = await workbook.outputAsync()
-  let url = window.URL.createObjectURL(blobOutput)
-  console.log(url)
-  return url
-}
+import Converter from 'fast-component2excel'
+import dragDrop from 'drag-drop'
 
 class IndexPage extends React.Component {
   constructor() {
@@ -17,25 +9,24 @@ class IndexPage extends React.Component {
     this.setURL = this.setURL.bind(this)
     this.inputChange = this.inputChange.bind(this)
     this.state = {
-      blobURL: null,
-      URL: TEST_URL
+      files: []
     }
   }
-  setURL () {
-    const URL = this.state.URL
-    json2Excel(URL, callback).then(blobURL => this.setState({blobURL}))
+  componentDidMount () {
+    dragDrop('body', files => this.setState({files}) )
   }
-  inputChange(event) {
-    this.setState({URL: event.target.value})
+  async setURL () {
+    const [file] = this.files
+    const json = await Converter.convertExcelToJson(file)
+    console.log(json);
   }
+
   render () {
     return (
       <div>
       <h1>Form.io form to Excel example</h1>
       <p>Put a Form.io JSON URL below (or use the default) and press build and then download the file</p>
-      <input placeholder='Form.io JSON URL' onChange={this.inputChange}></input><br/>
       <button onClick={this.setURL}>Build</button> <br/>
-      <a id='download' href={this.state.blobURL} download={'out.xlsx'}>Download file</a>
     </div>
     )
   }
